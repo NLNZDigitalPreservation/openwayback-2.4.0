@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/openwayback.iml" filepath="$PROJECT_DIR$/openwayback.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wayback-cdx-server-core/openwayback-cdx-server.iml" filepath="$PROJECT_DIR$/wayback-cdx-server-core/openwayback-cdx-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wayback-cdx-server-webapp/openwayback-cdx-server-webapp.iml" filepath="$PROJECT_DIR$/wayback-cdx-server-webapp/openwayback-cdx-server-webapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wayback-core/openwayback-core.iml" filepath="$PROJECT_DIR$/wayback-core/openwayback-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dist/openwayback-dist.iml" filepath="$PROJECT_DIR$/dist/openwayback-dist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wayback-webapp/openwayback-webapp.iml" filepath="$PROJECT_DIR$/wayback-webapp/openwayback-webapp.iml" />
+    </modules>
+  </component>
+</project>
