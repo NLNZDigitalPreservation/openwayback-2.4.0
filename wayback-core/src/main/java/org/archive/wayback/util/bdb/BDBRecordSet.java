@@ -24,19 +24,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
+import com.sleepycat.je.*;
 import org.archive.wayback.util.ByteOp;
-
-
-import com.sleepycat.je.Cursor;
-import com.sleepycat.je.Database;
-import com.sleepycat.je.DatabaseConfig;
-import com.sleepycat.je.DatabaseEntry;
-import com.sleepycat.je.DatabaseException;
-import com.sleepycat.je.Environment;
-import com.sleepycat.je.EnvironmentConfig;
-import com.sleepycat.je.LockMode;
-import com.sleepycat.je.OperationStatus;
-import com.sleepycat.je.Transaction;
 
 /**
  *
@@ -83,6 +72,7 @@ public class BDBRecordSet {
 		environmentConfig.setAllowCreate(true);
 		environmentConfig.setTransactional(true);
 		environmentConfig.setConfigParam("je.log.fileMax",JE_LOG_FILEMAX);
+        environmentConfig.setCacheSize(512000000L);
 		File file = new File(path);
 		if(!file.isDirectory()) {
 			if(!file.mkdirs()) {
@@ -94,6 +84,7 @@ public class BDBRecordSet {
 		databaseConfig.setAllowCreate(true);
 		databaseConfig.setTransactional(true);
 		// perform other database configurations
+        databaseConfig.setCacheMode(CacheMode.EVICT_LN);
 
 		db = env.openDatabase(null, dbName, databaseConfig);
 	}

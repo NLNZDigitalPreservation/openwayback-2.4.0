@@ -23,16 +23,8 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
+import com.sleepycat.je.*;
 import org.archive.wayback.util.Timestamp;
-
-import com.sleepycat.je.Database;
-import com.sleepycat.je.DatabaseConfig;
-import com.sleepycat.je.DatabaseEntry;
-import com.sleepycat.je.DatabaseException;
-import com.sleepycat.je.Environment;
-import com.sleepycat.je.EnvironmentConfig;
-import com.sleepycat.je.LockMode;
-import com.sleepycat.je.OperationStatus;
 
 /**
  * Generic class for simple key-value pair lookup using BDBJE.
@@ -69,6 +61,7 @@ public class BDBMap {
         try {
             EnvironmentConfig envConf = new EnvironmentConfig();
             envConf.setAllowCreate(true);
+            envConf.setCacheSize(512000000L);
             File envDir = new File(dir);
             if (!envDir.exists())
                 envDir.mkdirs();
@@ -77,6 +70,7 @@ public class BDBMap {
             DatabaseConfig dbConf = new DatabaseConfig();
             dbConf.setAllowCreate(true);
             dbConf.setSortedDuplicates(false);
+            dbConf.setCacheMode(CacheMode.EVICT_LN);
             db = env.openDatabase(null, name, dbConf);  
         } catch (DatabaseException e) {
             e.printStackTrace();
